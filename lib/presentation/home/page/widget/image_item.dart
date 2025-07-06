@@ -2,15 +2,10 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:icondo/presentation/home/page/widget/home_detail_page.dart';
 
-class ImageItem extends StatefulWidget {
+class ImageItem extends StatelessWidget {
   const ImageItem({super.key, required this.imageUrl});
   final String imageUrl;
 
-  @override
-  State<ImageItem> createState() => _ImageItemState();
-}
-
-class _ImageItemState extends State<ImageItem> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -18,7 +13,7 @@ class _ImageItemState extends State<ImageItem> {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => HomeDetailPage(imageUrl: widget.imageUrl),
+            builder: (context) => HomeDetailPage(imageUrl: imageUrl),
           ),
         );
       },
@@ -27,7 +22,7 @@ class _ImageItemState extends State<ImageItem> {
         child: ClipRRect(
           borderRadius: BorderRadius.circular(8),
           child: CachedNetworkImage(
-            imageUrl: widget.imageUrl,
+            imageUrl: imageUrl,
             fit: BoxFit.cover,
             placeholder: (context, url) =>
                 const Center(child: CircularProgressIndicator()),

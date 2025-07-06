@@ -33,16 +33,24 @@ import Photos
   }
   
   private func saveImageToGallery(imagePath: String, result: @escaping FlutterResult) {
-    // Check permission first
     let status = PHPhotoLibrary.authorizationStatus()
     
     switch status {
-    case .authorized, .limited:
+    case .authorized:
       saveImageToGalleryInternal(imagePath: imagePath, result: result)
+    case .limited:
+      if #available(iOS 14, *) {
+        saveImageToGalleryInternal(imagePath: imagePath, result: result)
+      } else {
+
+        result(false)
+      }
     case .notDetermined:
       PHPhotoLibrary.requestAuthorization { [weak self] newStatus in
         DispatchQueue.main.async {
-          if newStatus == .authorized || newStatus == .limited {
+          if newStatus == .authorized {
+            self?.saveImageToGalleryInternal(imagePath: imagePath, result: result)
+          } else if #available(iOS 14, *), newStatus == .limited {
             self?.saveImageToGalleryInternal(imagePath: imagePath, result: result)
           } else {
             result(false)

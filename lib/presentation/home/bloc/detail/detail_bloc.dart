@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../services/image_download_service.dart';
+import 'package:icondo/services/image_download_service.dart';
 import 'detail_event.dart';
 import 'detail_state.dart';
 

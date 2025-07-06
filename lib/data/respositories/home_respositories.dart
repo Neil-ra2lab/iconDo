@@ -1,4 +1,4 @@
-import '../../rest_clients/model/address/address_model.dart';
+import 'package:icondo/rest_clients/model/address/address_model.dart';
 
 abstract class HomeRepository {
   Future<List<String>> getImages();

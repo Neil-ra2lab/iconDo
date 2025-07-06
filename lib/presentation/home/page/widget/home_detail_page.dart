@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../bloc/detail/detail_bloc.dart';
-import '../../bloc/detail/detail_event.dart';
+import 'package:icondo/presentation/home/bloc/detail/detail_bloc.dart';
+import 'package:icondo/presentation/home/bloc/detail/detail_event.dart';
 
 class HomeDetailPage extends StatefulWidget {
   final String imageUrl;

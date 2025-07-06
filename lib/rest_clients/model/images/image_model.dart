@@ -1,9 +1,10 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:equatable/equatable.dart';
 
 part 'image_model.g.dart';
 
 @JsonSerializable()
-class ImageModel {
+class ImageModel extends Equatable {
   final List<String> images;
 
   const ImageModel({required this.images});
@@ -14,16 +15,5 @@ class ImageModel {
   Map<String, dynamic> toJson() => _$ImageModelToJson(this);
 
   @override
-  String toString() {
-    return 'ImageModel(images: $images)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-    return other is ImageModel && other.images == images;
-  }
-
-  @override
-  int get hashCode => images.hashCode;
+  List<Object?> get props => [images];
 }

@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:icondo/data/respositories/home_respositories_imp.dart';
-import '../../../../rest_clients/model/address/address_model.dart';
+import 'package:icondo/rest_clients/model/address/address_model.dart';
 import 'home_event.dart';
 import 'home_state.dart';
 
