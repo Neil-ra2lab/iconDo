@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:icondo/presentation/home/bloc/home_bloc.dart';
-import 'package:icondo/presentation/home/bloc/home_event.dart';
-import 'package:icondo/presentation/home/bloc/home_state.dart';
+import 'package:icondo/presentation/home/bloc/home/home_bloc.dart';
+import 'package:icondo/presentation/home/bloc/home/home_event.dart';
+import 'package:icondo/presentation/home/bloc/home/home_state.dart';
 import 'package:icondo/presentation/home/page/widget/image_item.dart';
 
 class HomePage extends StatefulWidget {

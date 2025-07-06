@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:icondo/presentation/home/page/detail_page.dart';
+import 'package:icondo/presentation/home/page/widget/home_detail_page.dart';
 
 class ImageItem extends StatefulWidget {
   const ImageItem({super.key, required this.imageUrl});
@@ -18,7 +18,7 @@ class _ImageItemState extends State<ImageItem> {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => DetailPage(imageUrl: widget.imageUrl),
+            builder: (context) => HomeDetailPage(imageUrl: widget.imageUrl),
           ),
         );
       },

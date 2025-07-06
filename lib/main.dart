@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:dio/dio.dart';
 import 'data/respositories/home_respositories_imp.dart';
 import 'rest_clients/clients/home/home_clients.dart';
-import 'presentation/home/bloc/home_bloc.dart';
+import 'presentation/home/bloc/home/home_bloc.dart';
 import 'presentation/home/page/home_page.dart';
 
 void main() {

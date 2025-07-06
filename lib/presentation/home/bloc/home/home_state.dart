@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import '../../../rest_clients/model/address/address_model.dart';
+import '../../../../rest_clients/model/address/address_model.dart';
 
 // States
 abstract class HomeState extends Equatable {

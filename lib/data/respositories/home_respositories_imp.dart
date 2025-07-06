@@ -6,6 +6,8 @@ class HomeRepositoryImpl implements HomeRepository {
   const HomeRepositoryImpl({required this.homeClients});
 
   final HomeClients homeClients;
+
+  @override
   Future<Map<String, dynamic>> getInitialData() async {
     try {
       final results = await Future.wait([
@@ -22,6 +24,7 @@ class HomeRepositoryImpl implements HomeRepository {
     }
   }
 
+  @override
   Future<Map<String, dynamic>> getInitialDataWithTimeout({
     Duration timeout = const Duration(seconds: 30),
   }) async {
@@ -40,6 +43,7 @@ class HomeRepositoryImpl implements HomeRepository {
     }
   }
 
+  @override
   Future<Map<String, dynamic>> getInitialDataWithErrorHandling() async {
     try {
       final results = await Future.wait([
@@ -61,12 +65,20 @@ class HomeRepositoryImpl implements HomeRepository {
   }
 
   @override
-  Future<List<AddressModel>> getAddresses() {
-    throw UnimplementedError();
+  Future<List<String>> getImages() async {
+    try {
+      return await homeClients.getImages();
+    } catch (e) {
+      throw Exception('Failed to get images: $e');
+    }
   }
 
   @override
-  Future<List<String>> getImages() {
-    throw UnimplementedError();
+  Future<List<AddressModel>> getAddresses() async {
+    try {
+      return await homeClients.getAddresses();
+    } catch (e) {
+      throw Exception('Failed to get addresses: $e');
+    }
   }
 }
