@@ -1,39 +1,35 @@
 import 'dart:io';
 import 'package:flutter/services.dart';
+import 'package:path_provider/path_provider.dart';
 
 class GallerySaver {
   static const MethodChannel _channel = MethodChannel('gallery_saver');
 
+  /// Lưu ảnh vào gallery bằng native (ưu tiên Android)
   static Future<bool> saveImageToGallery(String imagePath) async {
     try {
-      if (Platform.isAndroid) {
-        return await _saveToAndroidGallery(imagePath);
-      } else if (Platform.isIOS) {
-        return await _saveToIOSGallery(imagePath);
+      if (Platform.isAndroid || Platform.isIOS) {
+        final result = await _channel.invokeMethod('saveImageToGallery', {
+          'imagePath': imagePath,
+        });
+        return result == true;
+      } else {
+        final result = await _channel.invokeMethod('saveImageToGallery', {
+          'imagePath': imagePath,
+        });
+        return result == true;
+        // Directory? picturesDir;
+        // final documentsDir = await getApplicationDocumentsDirectory();
+        // picturesDir = Directory('${documentsDir.path}/Pictures');
+        // if (!await picturesDir.exists()) {
+        //   await picturesDir.create(recursive: true);
+        // }
+        // final sourceFile = File(imagePath);
+        // final fileName = 'image_${DateTime.now().millisecondsSinceEpoch}.png';
+        // final destinationPath = '${picturesDir.path}/$fileName';
+        // await sourceFile.copy(destinationPath);
+        // return true;
       }
-      return false;
-    } catch (e) {
-      return false;
-    }
-  }
-
-  static Future<bool> _saveToAndroidGallery(String imagePath) async {
-    try {
-      final result = await _channel.invokeMethod('saveImageToGallery', {
-        'imagePath': imagePath,
-      });
-      return result == true;
-    } catch (e) {
-      return false;
-    }
-  }
-
-  static Future<bool> _saveToIOSGallery(String imagePath) async {
-    try {
-      final result = await _channel.invokeMethod('saveImageToGallery', {
-        'imagePath': imagePath,
-      });
-      return result == true;
     } catch (e) {
       return false;
     }

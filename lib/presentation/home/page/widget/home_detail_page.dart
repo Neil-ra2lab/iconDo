@@ -37,33 +37,9 @@ class _HomeDetailPageContent extends StatelessWidget {
     return Scaffold(
       appBar: null,
       backgroundColor: Color(0xff333333),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+      body: Stack(
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              IconButton(
-                onPressed: () => _downloadImage(context),
-                icon: Image.asset(
-                  'assets/images/ic_download.png',
-                  width: 30,
-                  height: 30,
-                ),
-              ),
-              IconButton(
-                onPressed: () async {
-                  Navigator.pop(context);
-                },
-                icon: Image.asset(
-                  'assets/images/ic_close.png',
-                  width: 30,
-                  height: 30,
-                ),
-              ),
-            ],
-          ),
-          SizedBox(height: 40),
+          // Main content
           Center(
             child: InteractiveViewer(
               child: CachedNetworkImage(
@@ -82,6 +58,34 @@ class _HomeDetailPageContent extends StatelessWidget {
                   ),
                 ),
               ),
+            ),
+          ),
+          // Fixed top row
+          Positioned(
+            top: 50,
+            right: 16,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                IconButton(
+                  onPressed: () => _downloadImage(context),
+                  icon: Image.asset(
+                    'assets/images/ic_download.png',
+                    width: 30,
+                    height: 30,
+                  ),
+                ),
+                IconButton(
+                  onPressed: () async {
+                    Navigator.pop(context);
+                  },
+                  icon: Image.asset(
+                    'assets/images/ic_close.png',
+                    width: 30,
+                    height: 30,
+                  ),
+                ),
+              ],
             ),
           ),
         ],

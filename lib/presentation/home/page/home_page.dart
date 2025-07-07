@@ -16,7 +16,6 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    // Gọi đồng thời 2 API khi màn hình được mở
     context.read<HomeBloc>().add(LoadInitialData());
   }
 
