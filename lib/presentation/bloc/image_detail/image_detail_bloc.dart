@@ -20,7 +20,7 @@ class ImageDetailBloc extends Bloc<ImageDetailEvent, ImageDetailState> {
     emit(DetailDownloading());
 
     try {
-      final tempFilePath = await ImageDownloadService.downloadAndSaveInIsolate(
+      final tempFilePath = await ImageDownloadService.downloadAndResizeImage(
         event.imageUrl,
       );
 
