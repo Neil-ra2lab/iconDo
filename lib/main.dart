@@ -1,10 +1,10 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:dio/dio.dart';
-import 'data/respositories/home_respositories_imp.dart';
-import 'rest_clients/clients/home/home_clients.dart';
-import 'presentation/home/bloc/home/home_bloc.dart';
-import 'presentation/home/page/home_page.dart';
+import 'package:icondo/data/rest_clients/clients/mocki/mocki_clients.dart';
+import 'package:icondo/data/services/home_data/home_data_service_impl.dart';
+import 'package:icondo/presentation/bloc/home/home_bloc.dart';
+import 'package:icondo/presentation/page/home/home_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,8 +19,8 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider<HomeBloc>(
           create: (context) => HomeBloc(
-            homeRepositoryImpl: HomeRepositoryImpl(
-              homeClients: HomeClients(Dio(), baseUrl: 'https://mocki.io/'),
+            homeRepositoryImpl: HomeDataServiceImpl(
+              mockiClient: MockiClient(Dio(), baseUrl: 'https://mocki.io/'),
             ),
           ),
         ),
